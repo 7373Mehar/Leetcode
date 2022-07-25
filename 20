@@ -1,0 +1,31 @@
+Solution 1:
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        closeToOpen = { ")": "(", "}":"{", "]":"["}
+        
+        for c in s:
+            if c in closeToOpen:
+                if stack and stack[-1]== closeToOpen[c]:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(c)
+        return True if not stack else False
+        
+ 
+Solution 2: 
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        close_map = {"(": ")", "{":"}", "[":"]"}
+        
+        for symbol in s:
+            if symbol in close_map.keys():
+                stack.append(symbol)
+            elif stack == [] or symbol!=close_map[stack.pop()]:
+                return False
+        return stack == []

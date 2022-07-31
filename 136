@@ -1,0 +1,24 @@
+#Solution 1:
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        hash_map = {}
+        for i in range(len(nums)):
+            if nums[i] not in hash_map:
+                hash_map[nums[i]]= 1
+            else:
+                hash_map[nums[i]] += 1
+        for i in range(len(nums)):
+            if hash_map[nums[i]] == 1:
+                return nums[i]
+            #hash_map[nums[i]] += 1
+
+#Solution 2: 
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        res = 0 # n^0=0
+        for n in nums:
+            res = n^res
+        return res
+        
+        

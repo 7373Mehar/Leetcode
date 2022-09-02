@@ -1,0 +1,20 @@
+Solution 1: Two pointers
+
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        s = s.strip().split()                   #Converting s into a list to get rid of spaces
+        output = []
+        for word in s:                          #Reversing each word of the list using two-pointers
+            left,right = 0,(len(word) - 1)
+            while (left < right):
+                word = list(word)
+                word[left], word[right] = word[right], word[left]
+                left += 1
+                right -= 1
+            Ans = (''.join(word))
+            output.append(Ans)
+        return(' '.join(output))
+        
+Solution 2: Pythonic
+def reverseWords(self, s):
+    return ' '.join(s.split()[::-1])[::-1]
